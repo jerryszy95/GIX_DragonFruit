@@ -62,7 +62,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         {
             // Instantiate Anchor model at the hit pose.
             var anchorObject = Instantiate(AnchorPrefab, position, rotation);
-
+            anchorObject.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
             // Anchor must be hosted in the device.
             anchorObject.GetComponent<AnchorController>().HostLastPlacedAnchor(anchor);
 
