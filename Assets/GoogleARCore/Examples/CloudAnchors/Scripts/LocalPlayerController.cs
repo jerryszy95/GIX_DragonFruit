@@ -85,10 +85,31 @@ namespace GoogleARCore.Examples.CloudAnchors
         {
             // Instantiate Star model at the hit pose.
             var starObject = Instantiate(StarPrefab, position, rotation);
+            sharedObj = starObject;
+
 
             // Spawn the object in all clients.
 #pragma warning disable 618
             NetworkServer.Spawn(starObject);
+#pragma warning restore 618
+        }
+
+        GameObject sharedObj;
+
+#pragma warning disable 618
+        [Command]
+#pragma warning restore 618
+        public void CmdUpdatePostition(GameObject FirstPersonCamera)
+        {
+            if(sharedObj == null)
+                return;
+
+            // Let the starobject follow the firstPersonCmaera
+            sharedObj.transform.position = FirstPersonCamera.transform.position + FirstPersonCamera.transform.forward;
+
+            // Spawn the object in all clients.
+#pragma warning disable 618
+            NetworkServer.Spawn(sharedObj);
 #pragma warning restore 618
         }
     }

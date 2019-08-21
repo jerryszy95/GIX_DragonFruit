@@ -479,6 +479,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 261734895}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &261734897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1637996540812124, guid: c10877f7cd5764de18d46d7b777d1faa,
+    type: 3}
+  m_PrefabInstance: {fileID: 261734895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265054089
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,8 +517,9 @@ MonoBehaviour:
   UIController: {fileID: 1077067569}
   ARCoreRoot: {fileID: 1995596071}
   ARCoreWorldOriginHelper: {fileID: 635649539}
-  ARKitRoot: {fileID: 1943188169}
   ARKitFirstPersonCamera: {fileID: 1443761023}
+  ARKitRoot: {fileID: 1943188169}
+  FirstPersonCamera: {fileID: 261734897}
 --- !u!4 &265054091
 Transform:
   m_ObjectHideFlags: 0
@@ -876,6 +883,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 261734896}
     m_Modifications:
+    - target: {fileID: 1536853937296922, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
+      propertyPath: m_Name
+      value: Point Cloud
+      objectReference: {fileID: 0}
     - target: {fileID: 4205356930328266, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -907,10 +918,6 @@ PrefabInstance:
     - target: {fileID: 4205356930328266, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1536853937296922, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
-      propertyPath: m_Name
-      value: Point Cloud
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
@@ -1628,7 +1635,7 @@ MonoBehaviour:
   - {fileID: 1517545619891756, guid: c162c528b139240d0881c95be8c04f2b, type: 3}
   - {fileID: 1930613698465500, guid: d7e51cffc46904f65957fa3aeb255467, type: 3}
   - {fileID: 8898788818054242093, guid: b9cc678cf0b5e5642ae5741652e054bb, type: 3}
-  - {fileID: 5050379454751457950, guid: 8caacdd994377db499aec5fce00a74c9, type: 3}
+  - {fileID: 7803808921938953839, guid: f18471ca0c1b69647a4ef59642b7ffdf, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

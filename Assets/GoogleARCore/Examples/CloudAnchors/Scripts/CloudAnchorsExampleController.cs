@@ -45,6 +45,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// The root for ARCore-specific GameObjects in the scene.
         /// </summary>
         public GameObject ARCoreRoot;
+        
 
         /// <summary>
         /// The helper that will calculate the World Origin offset when performing a raycast or
@@ -52,6 +53,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// </summary>
         public ARCoreWorldOriginHelper ARCoreWorldOriginHelper;
 
+        public Camera ARKitFirstPersonCamera;
         [Header("ARKit")]
 
         /// <summary>
@@ -62,8 +64,9 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <summary>
         /// The first-person camera used to render the AR background texture for ARKit.
         /// </summary>
-        public Camera ARKitFirstPersonCamera;
+        
 
+        public GameObject FirstPersonCamera;
         /// <summary>
         /// A helper object to ARKit functionality.
         /// </summary>
@@ -210,6 +213,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                 if (_CanPlaceStars())
                 {
                     _InstantiateStar();
+                    
+
                 }
                 else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting)
                 {
@@ -228,6 +233,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                     OnAnchorInstantiated(true);
                 }
             }
+            _UpdateStar();
         }
 
         /// <summary>
@@ -377,6 +383,13 @@ namespace GoogleARCore.Examples.CloudAnchors
             // Star must be spawned in the server so a networking Command is used.
             GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>()
                 .CmdSpawnStar(m_LastHitPose.Value.position, m_LastHitPose.Value.rotation);
+        }
+        
+        private void _UpdateStar()
+        {
+            // Star must be spawned in the server so a networking Command is used.
+            GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>()
+                .CmdUpdatePostition(FirstPersonCamera);
         }
 
         /// <summary>
