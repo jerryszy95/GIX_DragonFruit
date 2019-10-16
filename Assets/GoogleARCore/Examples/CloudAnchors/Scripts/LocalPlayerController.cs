@@ -84,7 +84,12 @@ namespace GoogleARCore.Examples.CloudAnchors
         public void CmdSpawnStar(Vector3 position, Quaternion rotation)
         {
             // Instantiate Star model at the hit pose.
+            if(sharedObj != null)
+            {
+                sharedObj.GetComponent<estInput>().enabled = false;
+            }
             var starObject = Instantiate(StarPrefab, position, rotation);
+            //starObject.GetComponent<estInput>().enabled = false;
             sharedObj = starObject;
 
 
@@ -92,6 +97,8 @@ namespace GoogleARCore.Examples.CloudAnchors
 #pragma warning disable 618
             NetworkServer.Spawn(starObject);
 #pragma warning restore 618
+
+            //starObject.GetComponent<estInput>().enabled = true;
         }
 
         GameObject sharedObj;
