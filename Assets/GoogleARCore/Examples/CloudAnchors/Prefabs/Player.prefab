@@ -79,5 +79,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StarPrefab: {fileID: 7803808921938953839, guid: f18471ca0c1b69647a4ef59642b7ffdf,
     type: 3}
-  AnchorPrefab: {fileID: 8898788818054242093, guid: b9cc678cf0b5e5642ae5741652e054bb,
+  AnchorPrefab: {fileID: 1930613698465500, guid: d7e51cffc46904f65957fa3aeb255467,
     type: 3}
