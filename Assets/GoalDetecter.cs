@@ -9,7 +9,7 @@ public class GoalDetecter : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         count++;
-        GameObject.Find("Goal").GetComponent<Text>().text = "Goal: " + count.ToString();
+        GameObject.Find("Score").GetComponent<TextMesh>().text = "Goal: " + count.ToString();
     }
 
     // Start is called before the first frame update
