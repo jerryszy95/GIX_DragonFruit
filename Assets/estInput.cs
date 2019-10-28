@@ -5,7 +5,7 @@ using UnityEngine;
 public class estInput : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Rigidbody RB;
+    Rigidbody RB;
     GameObject Camera;
     bool initial = true;
     void Start()
