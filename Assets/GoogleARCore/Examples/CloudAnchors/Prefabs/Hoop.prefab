@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5097306400259272594}
   - component: {fileID: 2699992285650764348}
   - component: {fileID: 1601826073646498553}
-  - component: {fileID: 9118728191354117463}
+  - component: {fileID: 2574623877036291826}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -93,7 +93,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &9118728191354117463
+--- !u!114 &2574623877036291826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

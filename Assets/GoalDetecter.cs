@@ -5,12 +5,17 @@ using UnityEngine;
 
 public class GoalDetecter : MonoBehaviour
 {
-    public Text GoalText;
-    int Goal = 0;
+    int count = 0;
+    private void OnTriggerEnter(Collider other)
+    {
+        count++;
+        GameObject.Find("Goal").GetComponent<Text>().text = "Goal: " + count.ToString();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        GoalText.text = "Goal：0";
+        
     }
 
     // Update is called once per frame
