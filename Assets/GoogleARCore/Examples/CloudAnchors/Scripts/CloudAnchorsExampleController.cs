@@ -23,6 +23,7 @@ namespace GoogleARCore.Examples.CloudAnchors
     using GoogleARCore;
     using UnityEngine;
     using UnityEngine.Networking;
+    using UnityEngine.UI;
 
 #if UNITY_EDITOR
     // Set up touch input propagation while using Instant Preview in the editor.
@@ -158,6 +159,34 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <summary>
         /// The Unity Update() method.
         /// </summary>
+
+        public int DrgonFruitcount = 0;
+
+        public void addDragonFruit()
+        {
+            DrgonFruitcount ++;
+        }
+        public void shotDragonFruit()
+        {
+            DrgonFruitcount --;
+
+            GameObject.Find("RemainingBall").GetComponent<CollectBall>().removeball();
+        }
+
+
+
+
+        bool isBeconMode = false;
+
+        public void BeaconActived()
+        {
+            isBeconMode = true;
+        }
+        public void BeaconDisabled()
+        {
+            isBeconMode = false;
+        }
+
         public int count = 0;
         public void Update()
         {
@@ -211,16 +240,17 @@ namespace GoogleARCore.Examples.CloudAnchors
             {
                 // The first touch on the Hosting mode will instantiate the origin anchor. Any
                 // subsequent touch will instantiate a star, both in Hosting and Resolving modes.
-                if (_CanPlaceStars())
+                if (_CanPlaceStars() && !isBeconMode && DrgonFruitcount != 0)
                 {
                     if (count % 1 == 0)
                     {
                         _InstantiateStar();
                     }
+                    shotDragonFruit();
                     count++;
 
                 }
-                else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting)
+                else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting && !isBeconMode)
                 {
                     if (Application.platform != RuntimePlatform.IPhonePlayer)
                     {

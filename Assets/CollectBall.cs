@@ -11,6 +11,10 @@ public class CollectBall : MonoBehaviour
     {
         ballcount++;
     }
+    public void removeball()
+    {
+        ballcount--;
+    }
 
     void Start()
     {
