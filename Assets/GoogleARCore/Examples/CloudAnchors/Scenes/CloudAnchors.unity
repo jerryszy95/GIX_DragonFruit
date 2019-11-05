@@ -3394,15 +3394,9 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
-  m_IsActive: 0
---- !u!4 &367351657
-Transform:
-=======
   m_IsActive: 1
 --- !u!224 &378851854
 RectTransform:
->>>>>>> 7352bf5f66fba9f37b0a36a5d33a502fe347cf51
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
