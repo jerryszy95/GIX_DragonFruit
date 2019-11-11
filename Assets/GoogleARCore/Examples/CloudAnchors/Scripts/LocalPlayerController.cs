@@ -41,6 +41,67 @@ namespace GoogleARCore.Examples.CloudAnchors
         public GameObject AnchorPrefab;
 
         /// <summary>
+        /// The inital player have 0 dragonfruit, they can gain more by answer the question
+        /// </summary>
+        private int numDragonFruit = 10;
+
+        GameObject sharedObj;
+
+        public void addDragonFruit()
+        {
+            numDragonFruit++;
+        }
+
+        public void removeDragonFruit()
+        {
+            numDragonFruit--;
+        }
+
+
+
+
+#pragma warning disable 618
+        [Command]
+#pragma warning restore 618
+        public void CmdShootingDragonFruit(Vector3 position, Quaternion rotation)
+        {
+            if (numDragonFruit == 0)
+            {
+                Debug.Log("No dragonfruit");
+                return;
+            }
+            // DragonFruit count -1
+            numDragonFruit--;
+
+            var starObject = Instantiate(StarPrefab,GameObject.Find("First Person Camera").transform.position,rotation);
+            Debug.Log("DragonFruit is generated");
+            starObject.GetComponent<Rigidbody>().useGravity = true;
+            starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f), ForceMode.Impulse);
+
+            // Spawn the object in all clients.
+#pragma warning disable 618
+            NetworkServer.Spawn(starObject);
+#pragma warning restore 618
+
+        }/****************************************************************/
+
+
+
+
+
+
+        public bool LocalIsDragonFruit()
+        {
+            if (GameObject.Find("Dragon_Fruit_pink(Clone)") != null)
+            {
+                Debug.Log("Local dragonFruit is exist in the scene");
+                return true;
+            }
+            Debug.Log("Local dragonFruit is not exist in the scene");
+            return false;
+        }
+
+        /// <summary>
         /// The Unity OnStartLocalPlayer() method.
         /// </summary>
         public override void OnStartLocalPlayer()
@@ -101,7 +162,7 @@ namespace GoogleARCore.Examples.CloudAnchors
             //starObject.GetComponent<estInput>().enabled = true;
         }
 
-        GameObject sharedObj;
+        
 
 #pragma warning disable 618
         [Command]
