@@ -43,7 +43,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// <summary>
         /// The inital player have 0 dragonfruit, they can gain more by answer the question
         /// </summary>
-        private int numDragonFruit = 10;
+        private int numDragonFruit = 1000;
 
         GameObject sharedObj;
 
@@ -73,10 +73,10 @@ namespace GoogleARCore.Examples.CloudAnchors
             // DragonFruit count -1
             numDragonFruit--;
 
-            var starObject = Instantiate(StarPrefab,GameObject.Find("First Person Camera").transform.position + Vector3.forward, rotation);
+            var starObject = Instantiate(StarPrefab,Camera.main.transform.position + Camera.main.transform.forward, rotation);
             Debug.Log("DragonFruit is generated");
+            starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * 5.0f, ForceMode.Impulse);
             starObject.GetComponent<Rigidbody>().useGravity = true;
-            starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f), ForceMode.Impulse);
 
             // Spawn the object in all clients.
 #pragma warning disable 618

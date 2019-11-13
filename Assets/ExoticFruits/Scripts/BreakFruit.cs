@@ -36,6 +36,7 @@ public class BreakFruit : MonoBehaviour
                     part.gameObject.AddComponent<MeshCollider>(); 
 
             part.GetComponent<Rigidbody>().AddExplosionForce(200f, transform.position, 3.0f, 0.05f);
+            part.GetComponent<Rigidbody>().useGravity = true;
             if (part.gameObject.GetComponent<MeshCollider>())
             {
                 part.gameObject.GetComponent<MeshCollider>().convex = true;

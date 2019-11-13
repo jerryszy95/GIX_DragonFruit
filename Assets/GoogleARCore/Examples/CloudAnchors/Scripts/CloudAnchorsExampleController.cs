@@ -166,6 +166,12 @@ namespace GoogleARCore.Examples.CloudAnchors
         {
             DrgonFruitcount ++;
         }
+
+        public void add100DragonFruit()
+        {
+            DrgonFruitcount+= 100;
+        }
+
         public void shotDragonFruit()
         {
             DrgonFruitcount --;
