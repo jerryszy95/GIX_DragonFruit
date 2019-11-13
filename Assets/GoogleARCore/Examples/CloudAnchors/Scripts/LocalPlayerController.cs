@@ -59,6 +59,10 @@ namespace GoogleARCore.Examples.CloudAnchors
 
 
 
+        public void ShootingDragonFruit()
+        {
+            CmdShootingDragonFruit(Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
+        }
 
 #pragma warning disable 618
         [Command]
@@ -73,7 +77,7 @@ namespace GoogleARCore.Examples.CloudAnchors
             // DragonFruit count -1
             numDragonFruit--;
 
-            var starObject = Instantiate(StarPrefab,Camera.main.transform.position + Camera.main.transform.forward, rotation);
+            var starObject = Instantiate(StarPrefab, position, rotation);
             Debug.Log("DragonFruit is generated");
             starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * 5.0f, ForceMode.Impulse);
             starObject.GetComponent<Rigidbody>().useGravity = true;

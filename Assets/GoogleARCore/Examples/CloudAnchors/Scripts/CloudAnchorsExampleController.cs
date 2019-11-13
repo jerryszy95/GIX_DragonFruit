@@ -437,7 +437,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         {
             // Star must be spawned in the server so a networking Command is used.
             GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>()
-                .CmdShootingDragonFruit(FirstPersonCamera.transform.position + FirstPersonCamera.transform.forward, FirstPersonCamera.transform.rotation);
+                .ShootingDragonFruit();
         }
 
         private void _UpdateStar()

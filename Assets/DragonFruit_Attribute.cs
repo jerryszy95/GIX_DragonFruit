@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DragonFruit_Attribute : MonoBehaviour
 {
     Rigidbody RB;

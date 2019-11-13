@@ -35,7 +35,7 @@ public class GoalDetecter : MonoBehaviour
             BreakFruit fruit = other.transform.GetComponent<BreakFruit>();
             if (fruit != null)
             {
-                fruit.Run();
+                fruit.CmdRun();
             }
             transform.Find("Score").GetComponent<TextMesh>().text = "Goal: " + count.ToString();
         }

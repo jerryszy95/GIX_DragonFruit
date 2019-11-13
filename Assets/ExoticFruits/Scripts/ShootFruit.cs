@@ -9,6 +9,6 @@ public class ShootFruit : MonoBehaviour {
 #if UNITY_IPHONE || UNITY_IOS || UNITY_ANDROID
         if (Input.GetMouseButton(0))
 #endif
-        GetComponent<BreakFruit>().Run();
+        GetComponent<BreakFruit>().CmdRun();
     }
 }
