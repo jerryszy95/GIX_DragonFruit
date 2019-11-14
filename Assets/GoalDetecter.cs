@@ -39,6 +39,10 @@ public class GoalDetecter : MonoBehaviour
             }
             transform.Find("Score").GetComponent<TextMesh>().text = "Goal: " + count.ToString();
         }
+        else if(other.CompareTag("piece"))
+        {
+            TriggerJumpActions();
+        }
     }
 
     // Start is called before the first frame update

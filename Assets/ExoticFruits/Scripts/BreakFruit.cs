@@ -5,38 +5,26 @@ using UnityEngine.Networking;
 public class BreakFruit : NetworkBehaviour
 {
     //public Transform parts;
-    public GameObject parts;
-    private Transform breakable = null;
+    public GameObject[] parts;
+    bool breakable = false;
 
 
     void Start()
     {
-        parts.SetActive(false);
     }
 
     [Command]
     public void CmdRun()
     {   
         if (breakable) return;
+        breakable = true;
         //if (GetComponent<NetworkIdentity>().isClient) return;
 
         //breakable = (Transform)Instantiate(parts, transform.position, transform.rotation);
-        parts.SetActive(true);
-        breakable = parts.transform;
-        breakable.SetParent(null);
-        breakable.localScale = transform.localScale;
 
-        if (breakable.GetComponent<AudioSource>())
-            breakable.GetComponent<AudioSource>().pitch = Random.Range(0.84f, 1.28f);
-
-        foreach (Transform part in breakable)
+        for(int i = 0; i < parts.Length; i++)
         {
-            if (!part.gameObject.GetComponent<Rigidbody>())
-                part.gameObject.AddComponent<Rigidbody>();
-            if (!part.gameObject.GetComponent<Collider>())
-                if (!part.gameObject.GetComponent<MeshCollider>())
-                    part.gameObject.AddComponent<MeshCollider>();
-
+            GameObject part = Instantiate(parts[i], transform.position, transform.rotation);
             part.GetComponent<Rigidbody>().AddExplosionForce(200f, transform.position, 3.0f, 0.05f);
             part.GetComponent<Rigidbody>().useGravity = true;
             if (part.gameObject.GetComponent<MeshCollider>())
@@ -45,14 +33,41 @@ public class BreakFruit : NetworkBehaviour
                 part.gameObject.GetComponent<MeshCollider>().inflateMesh = true;
             }
 
-            part.parent = null;
-            NetworkServer.Spawn(part.gameObject);
-
-            float time = Random.Range(5f, 30f);
-            Destroy(part.gameObject, time);
+            NetworkServer.Spawn(part);
         }
 
-        Destroy(breakable.gameObject, 30f);
+        //parts.SetActive(true);
+        //breakable = parts.transform;
+        //breakable.SetParent(null);
+        //breakable.localScale = transform.localScale;
+
+        //if (breakable.GetComponent<AudioSource>())
+        //    breakable.GetComponent<AudioSource>().pitch = Random.Range(0.84f, 1.28f);
+
+        //foreach (Transform part in breakable)
+        //{
+        //    if (!part.gameObject.GetComponent<Rigidbody>())
+        //        part.gameObject.AddComponent<Rigidbody>();
+        //    if (!part.gameObject.GetComponent<Collider>())
+        //        if (!part.gameObject.GetComponent<MeshCollider>())
+        //            part.gameObject.AddComponent<MeshCollider>();
+
+        //    part.GetComponent<Rigidbody>().AddExplosionForce(200f, transform.position, 3.0f, 0.05f);
+        //    part.GetComponent<Rigidbody>().useGravity = true;
+        //    if (part.gameObject.GetComponent<MeshCollider>())
+        //    {
+        //        part.gameObject.GetComponent<MeshCollider>().convex = true;
+        //        part.gameObject.GetComponent<MeshCollider>().inflateMesh = true;
+        //    }
+
+        //    part.parent = null;
+        //    NetworkServer.Spawn(part.gameObject);
+
+            //float time = Random.Range(5f, 30f);
+            //Destroy(part.gameObject, time);
+        //}
+
+        //Destroy(breakable.gameObject, 30f);
         Destroy(gameObject);
     }
 }
