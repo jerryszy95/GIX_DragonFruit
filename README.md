@@ -12,11 +12,11 @@ Please install Unity version 2018.3.14f1 along with ARCore and android
 
 ## Deployment
 
-
+Deploy on an Android device using Unity's 'Build & Run'
 
 ## Built With
 * [Unity](https://unity.com/) - Cross platform game engine specialized in AR/VR technologies
-![Unity](img/unity.png)
+* [Feasycom](https://www.feasycom.com/product/show-254.html) - Battery-powered Bluetooth Low Energy proximity-beacon
 
 
 ## Authors
