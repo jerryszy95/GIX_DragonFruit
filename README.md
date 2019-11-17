@@ -17,6 +17,7 @@ Deploy on an Android device using Unity's 'Build & Run'
 ## Built With
 * [Unity](https://unity.com/) - Cross platform game engine specialized in AR/VR technologies
 * [Feasycom](https://www.feasycom.com/product/show-254.html) - Battery-powered Bluetooth Low Energy proximity-beacon
+* [Adobe Illustrator](https://www.adobe.com/products/illustrator.html) - Vector graphics editor
 
 
 ## Authors
