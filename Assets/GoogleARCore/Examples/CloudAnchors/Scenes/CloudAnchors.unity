@@ -10161,7 +10161,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &625939929
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15817,7 +15817,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5G supports millimeter waves only (high bands)
+  m_Text: 5G allows you to download 20 Gb/s (gigabits per second)
 --- !u!222 &946573489
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16201,7 +16201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 208}
+  m_AnchoredPosition: {x: -20, y: 244}
   m_SizeDelta: {x: 1400, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972243398
@@ -16237,7 +16237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: What bands does the phone support for 5G?
+  m_Text: What experiences can you expect from a 5G-enabled phone?
 --- !u!222 &972243399
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21521,7 +21521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1275620451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23366,7 +23366,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Millimeter wave only
+  m_Text: Faster download speeds
 --- !u!222 &1367770099
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28205,7 +28205,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Low bands
+  m_Text: Same experience as 4G
 --- !u!222 &1713993537
 CanvasRenderer:
   m_ObjectHideFlags: 0
