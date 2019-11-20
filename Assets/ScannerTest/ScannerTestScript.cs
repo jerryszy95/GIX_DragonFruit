@@ -32,8 +32,7 @@ public class ScannerTestScript : MonoBehaviour
     public GameObject Pop1;
     public GameObject Pop2;
     public GameObject Pop3;
-
-    public string DebugStr = "fuck";
+    public GameObject InstructionUI;
 
     public void OnButton()
     {
@@ -106,6 +105,7 @@ public class ScannerTestScript : MonoBehaviour
                             Pop1.SetActive(false);
                             Pop2.SetActive(false);
                             Pop3.SetActive(false);
+                            InstructionUI.SetActive(true);
                         }
                         else
                         {
@@ -114,12 +114,15 @@ public class ScannerTestScript : MonoBehaviour
                             {
                                 case 0:
                                     Pop1.SetActive(true);
+                                    InstructionUI.SetActive(false);
                                     break;
                                 case 1:
                                     Pop2.SetActive(true);
+                                    InstructionUI.SetActive(false);
                                     break;
                                 case 2:
                                     Pop3.SetActive(true);
+                                    InstructionUI.SetActive(false);
                                     break;
                             }
                         }

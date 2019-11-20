@@ -29,11 +29,6 @@ public class beaconOutput : MonoBehaviour
 
 
 
-        //////////////////////////
-        string DebugStr = GameObject.Find("Beacon").GetComponent<ScannerTestScript>().DebugStr;
-        GameObject.Find("DebugUI").GetComponent<Text>().text = DebugStr;
-
-
   
 
     }
