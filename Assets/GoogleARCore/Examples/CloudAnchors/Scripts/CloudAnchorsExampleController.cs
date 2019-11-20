@@ -164,7 +164,7 @@ namespace GoogleARCore.Examples.CloudAnchors
 
         public void addDragonFruit()
         {
-            DrgonFruitcount ++;
+            DrgonFruitcount += 2;
         }
 
         public void add100DragonFruit()
@@ -172,15 +172,10 @@ namespace GoogleARCore.Examples.CloudAnchors
             DrgonFruitcount+= 100;
         }
 
-        public void shotDragonFruit()
+        public int getDragonFruitNum()
         {
-            DrgonFruitcount --;
-
-            GameObject.Find("RemainingBall").GetComponent<CollectBall>().removeball();
+            return DrgonFruitcount;
         }
-
-
-
 
         bool isBeconMode = false;
 
@@ -192,6 +187,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         {
             isBeconMode = false;
         }
+
 
         public int count = 0;
         public void Update()
@@ -251,10 +247,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                 {
 
                     _InstantiateGragonFruit();
-
-
-                    shotDragonFruit();
-                    count++;
+                    DrgonFruitcount--;
 
                 }
                 else if (!m_IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting && !isBeconMode)

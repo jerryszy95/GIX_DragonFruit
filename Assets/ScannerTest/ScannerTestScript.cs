@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Reflection;
+using GoogleARCore.Examples.CloudAnchors;
 
 public class ScannerTestScript : MonoBehaviour
 {
@@ -106,6 +107,7 @@ public class ScannerTestScript : MonoBehaviour
                             Pop2.SetActive(false);
                             Pop3.SetActive(false);
                             InstructionUI.SetActive(true);
+                            GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconDisabled();
                         }
                         else
                         {
@@ -115,14 +117,17 @@ public class ScannerTestScript : MonoBehaviour
                                 case 0:
                                     Pop1.SetActive(true);
                                     InstructionUI.SetActive(false);
+                                    GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
                                 case 1:
                                     Pop2.SetActive(true);
                                     InstructionUI.SetActive(false);
+                                    GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
                                 case 2:
                                     Pop3.SetActive(true);
                                     InstructionUI.SetActive(false);
+                                    GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
                             }
                         }

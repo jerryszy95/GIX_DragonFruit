@@ -32,7 +32,7 @@ public class HttpReceive : MonoBehaviour
             else
             {
                 //Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
-                GameObject.Find("HttpText").GetComponent<Text>().text = webRequest.downloadHandler.text;
+                //GameObject.Find("HttpText").GetComponent<Text>().text = webRequest.downloadHandler.text;
             }
 
         }
