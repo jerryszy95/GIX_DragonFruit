@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GoalDetecter : MonoBehaviour
 {
-    int count = 0;
+    public int count = 0;
     Animator anim;
 
     /*
@@ -55,8 +55,9 @@ public class GoalDetecter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-            TriggerJumpActions();
+        /*
+        
+        */
     }
 
     void TriggerJumpActions()

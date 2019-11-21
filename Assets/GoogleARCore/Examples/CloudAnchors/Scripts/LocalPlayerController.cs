@@ -59,15 +59,15 @@ namespace GoogleARCore.Examples.CloudAnchors
 
 
 
-        public void ShootingDragonFruit()
+        public void ShootingDragonFruit(float force)
         {
-            CmdShootingDragonFruit(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.rotation);
+            CmdShootingDragonFruit(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.rotation, force);
         }
 
 #pragma warning disable 618
         [Command]
 #pragma warning restore 618
-        public void CmdShootingDragonFruit(Vector3 position, Quaternion rotation)
+        public void CmdShootingDragonFruit(Vector3 position, Quaternion rotation, float force)
         {
             if (numDragonFruit == 0)
             {
@@ -79,7 +79,8 @@ namespace GoogleARCore.Examples.CloudAnchors
 
             var starObject = Instantiate(StarPrefab, position, rotation);
             Debug.Log("DragonFruit is generated");
-            starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * 5.0f, ForceMode.Impulse);
+            Debug.Log("force: " + force);
+            starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * (force / 280f)*3, ForceMode.Impulse);
             starObject.GetComponent<Rigidbody>().useGravity = true;
 
             // Spawn the object in all clients.

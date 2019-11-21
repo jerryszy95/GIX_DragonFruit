@@ -34,10 +34,20 @@ public class ScannerTestScript : MonoBehaviour
     public GameObject Pop2;
     public GameObject Pop3;
     public GameObject InstructionUI;
+    public GameObject CongratUI;
 
     bool pop1status = true;
     bool pop2status = true;
     bool pop3status = true;
+    bool DestoryBeacon = false;
+
+    public void DestoryBeaconMode()
+    {
+        if(!pop1status && !pop2status && !pop3status)//当三个beacon都是False的情况下，Destory beacon gameobject
+        {
+            DestoryBeacon = true;
+        }
+    }
 
 
     public void OnButton()
@@ -79,6 +89,12 @@ public class ScannerTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(DestoryBeacon)
+        {
+            Debug.Log("Beacon mode is off");
+            CongratUI.SetActive(true);
+            Destroy(gameObject);
+        }
         if (_timeout > 0f)
         {
             _timeout -= Time.deltaTime;

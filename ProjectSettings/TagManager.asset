@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - piece
+  - Localplayer
   layers:
   - Default
   - TransparentFX

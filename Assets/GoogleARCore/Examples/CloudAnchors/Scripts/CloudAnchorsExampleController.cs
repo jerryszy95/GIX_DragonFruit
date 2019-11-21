@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------
 // <copyright file="CloudAnchorsExampleController.cs" company="Google">
 //
 // Copyright 2018 Google Inc. All Rights Reserved.
@@ -190,6 +190,68 @@ namespace GoogleARCore.Examples.CloudAnchors
 
 
         public int count = 0;
+        private Vector2 startFingerPos;
+        private bool startPosFlag;
+        private Vector2 nowFingerPos;
+        private float xMoveDistance;
+        private float yMoveDistance;
+        private int backValue;
+        private float force;
+
+        float judueFinger()
+        {
+
+            if (Input.GetTouch(0).phase == TouchPhase.Began && startPosFlag == true)
+            {
+                //Debug.Log("======开始触摸=====");
+
+                startFingerPos = Input.GetTouch(0).position;
+                startPosFlag = false;
+            }
+
+            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            {
+                //Debug.Log("======释放触摸=====");
+                startPosFlag = true;
+            }
+
+            nowFingerPos = Input.GetTouch(0).position;
+            xMoveDistance = Mathf.Abs(nowFingerPos.x - startFingerPos.x);
+            yMoveDistance = Mathf.Abs(nowFingerPos.y - startFingerPos.y);
+            Debug.Log(startFingerPos.y);
+            Debug.Log(nowFingerPos.y);
+
+
+            //if (xMoveDistance > yMoveDistance)
+            //{
+            //    if (nowFingerPos.x - startFingerPos.x > 0)
+            //    {
+            //        //Debug.Log("=======沿着X轴负方向移动=====");
+            //        backValue = -1;         //沿着X轴负方向移动
+            //    }
+            //    else
+            //    {
+            //        //Debug.Log("=======沿着X轴正方向移动=====");
+            //        backValue = 1;          //沿着X轴正方向移动
+            //    }
+            //}
+            //else
+            //{
+            //    if (nowFingerPos.y - startFingerPos.y > 0)
+            //    {
+            //        //Debug.Log("=======沿着Y轴正方向移动=====");
+            //        backValue = 1;         //沿着Y轴正方向移动
+            //    }
+            //    else
+            //    {
+            //        //Debug.Log("=======沿着Y轴负方向移动=====");
+            //        backValue = -1;         //沿着Y轴负方向移动
+            //    }
+
+            //}
+            return yMoveDistance;
+        }
+
         public void Update()
         {
             _UpdateApplicationLifecycle();
@@ -246,7 +308,8 @@ namespace GoogleARCore.Examples.CloudAnchors
                 if (_CanPlaceStars() && !isBeconMode && DrgonFruitcount != 0)
                 {
 
-                    _InstantiateGragonFruit();
+                    force = judueFinger();
+                    _InstantiateGragonFruit(force);
                     DrgonFruitcount--;
 
                 }
@@ -426,11 +489,11 @@ namespace GoogleARCore.Examples.CloudAnchors
                 
         }
 
-        private void _InstantiateGragonFruit()
+        private void _InstantiateGragonFruit(float force)
         {
             // Star must be spawned in the server so a networking Command is used.
             GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>()
-                .ShootingDragonFruit();
+                .ShootingDragonFruit(force);
         }
 
         private void _UpdateStar()
