@@ -35,6 +35,11 @@ public class ScannerTestScript : MonoBehaviour
     public GameObject Pop3;
     public GameObject InstructionUI;
 
+    bool pop1status = true;
+    bool pop2status = true;
+    bool pop3status = true;
+
+
     public void OnButton()
     {
         BluetoothLEHardwareInterface.DeInitialize(() => Debug.Log("Deinitialized"));
@@ -115,16 +120,28 @@ public class ScannerTestScript : MonoBehaviour
                             switch (rssiMax)
                             {
                                 case 0:
+                                    if (!pop1status)
+                                    {
+                                        break;
+                                    }
                                     Pop1.SetActive(true);
                                     InstructionUI.SetActive(false);
                                     GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
                                 case 1:
+                                    if (!pop2status)
+                                    {
+                                        break;
+                                    }
                                     Pop2.SetActive(true);
                                     InstructionUI.SetActive(false);
                                     GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
                                 case 2:
+                                    if (!pop3status)
+                                    {
+                                        break;
+                                    }
                                     Pop3.SetActive(true);
                                     InstructionUI.SetActive(false);
                                     GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
@@ -141,5 +158,20 @@ public class ScannerTestScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Pop1Off()
+    {
+        pop1status = false;
+    }
+
+    public void Pop2Off()
+    {
+        pop2status = false;
+    }
+
+    public void Pop3Off()
+    {
+        pop3status = false;
     }
 }

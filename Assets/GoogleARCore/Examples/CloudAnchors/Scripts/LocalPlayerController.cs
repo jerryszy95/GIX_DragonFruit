@@ -61,7 +61,7 @@ namespace GoogleARCore.Examples.CloudAnchors
 
         public void ShootingDragonFruit()
         {
-            CmdShootingDragonFruit(Camera.main.transform.position + Camera.main.transform.forward, Quaternion.identity);
+            CmdShootingDragonFruit(Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.rotation);
         }
 
 #pragma warning disable 618
