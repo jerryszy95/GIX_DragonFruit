@@ -46,6 +46,7 @@ public class ScannerTestScript : MonoBehaviour
         if(!pop1status && !pop2status && !pop3status)//当三个beacon都是False的情况下，Destory beacon gameobject
         {
             DestoryBeacon = true;
+            InstructionUI.SetActive(false);
         }
     }
 
@@ -92,6 +93,7 @@ public class ScannerTestScript : MonoBehaviour
         if(DestoryBeacon)
         {
             Debug.Log("Beacon mode is off");
+            InstructionUI.SetActive(false);
             CongratUI.SetActive(true);
             Destroy(gameObject);
         }
@@ -127,7 +129,7 @@ public class ScannerTestScript : MonoBehaviour
                             Pop1.SetActive(false);
                             Pop2.SetActive(false);
                             Pop3.SetActive(false);
-                            InstructionUI.SetActive(true);
+                            //InstructionUI.SetActive(true);
                             GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconDisabled();
                         }
                         else
