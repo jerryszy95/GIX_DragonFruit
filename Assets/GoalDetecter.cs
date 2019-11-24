@@ -7,7 +7,6 @@ public class GoalDetecter : MonoBehaviour
 {
     public int count = 0;
     Animator anim;
-
     /*
     private void OnTriggerEnter(Collider other)
     {

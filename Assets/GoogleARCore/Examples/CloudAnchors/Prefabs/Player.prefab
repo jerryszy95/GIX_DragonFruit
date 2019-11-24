@@ -81,3 +81,5 @@ MonoBehaviour:
     type: 3}
   AnchorPrefab: {fileID: 1175603184220165083, guid: ec648d50dec2bf14a8abf56e64d90306,
     type: 3}
+  PoweredDragonFruit: {fileID: 3480906192877309136, guid: c7be2b847265dbb45a50f8c49ea3905e,
+    type: 3}

@@ -40,9 +40,16 @@ namespace GoogleARCore.Examples.CloudAnchors
         /// </summary>
         public GameObject AnchorPrefab;
 
+
         /// <summary>
         /// The inital player have 0 dragonfruit, they can gain more by answer the question
         /// </summary>
+        /// 
+
+        public GameObject PoweredDragonFruit;
+
+        bool isDragonFruitPowered = false;
+
         private int numDragonFruit = 1000;
 
         GameObject sharedObj;
@@ -57,7 +64,10 @@ namespace GoogleARCore.Examples.CloudAnchors
             numDragonFruit--;
         }
 
-
+        public void enpowerDragonFruit()
+        {
+            isDragonFruitPowered = true;
+        }
 
         public void ShootingDragonFruit(float force)
         {
@@ -76,17 +86,31 @@ namespace GoogleARCore.Examples.CloudAnchors
             }
             // DragonFruit count -1
             numDragonFruit--;
-
-            var starObject = Instantiate(StarPrefab, position, rotation);
-            Debug.Log("DragonFruit is generated");
-            Debug.Log("force: " + force);
-            starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * (force / 280f)*3, ForceMode.Impulse);
-            starObject.GetComponent<Rigidbody>().useGravity = true;
-
-            // Spawn the object in all clients.
+            if (isDragonFruitPowered)
+            {
+                var starObject = Instantiate(PoweredDragonFruit, position, rotation);
+                Debug.Log("DragonFruit is generated");
+                Debug.Log("force: " + force);
+                starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * (force / 280f) * 3, ForceMode.Impulse);
+                starObject.GetComponent<Rigidbody>().useGravity = true;
+                // Spawn the object in all clients.
 #pragma warning disable 618
-            NetworkServer.Spawn(starObject);
+                NetworkServer.Spawn(starObject);
 #pragma warning restore 618
+                isDragonFruitPowered = false;
+            }
+            else
+            {
+                var starObject = Instantiate(StarPrefab, position, rotation);
+                Debug.Log("DragonFruit is generated");
+                Debug.Log("force: " + force);
+                starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * (force / 280f) * 3, ForceMode.Impulse);
+                starObject.GetComponent<Rigidbody>().useGravity = true;
+                // Spawn the object in all clients.
+#pragma warning disable 618
+                NetworkServer.Spawn(starObject);
+#pragma warning restore 618
+            }
 
         }/****************************************************************/
 

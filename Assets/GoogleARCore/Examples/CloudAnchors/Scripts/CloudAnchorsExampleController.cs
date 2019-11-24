@@ -156,9 +156,7 @@ namespace GoogleARCore.Examples.CloudAnchors
             _ResetStatus();
         }
 
-        /// <summary>
-        /// The Unity Update() method.
-        /// </summary>
+        
 
         public int DrgonFruitcount = 0;
 
@@ -177,8 +175,9 @@ namespace GoogleARCore.Examples.CloudAnchors
             return DrgonFruitcount;
         }
 
+        // isBeaconMode is a flag to determine if the Beacon mode is active.
         bool isBeconMode = false;
-
+        
         public void BeaconActived()
         {
             isBeconMode = true;
@@ -188,8 +187,52 @@ namespace GoogleARCore.Examples.CloudAnchors
             isBeconMode = false;
         }
 
+        // isRingTriigered is a flag to determine if the player is step inside the ring. 
+        bool isRingTriggered = false;
 
-        public int count = 0;
+        public void RingIsTriggered()
+        {
+            isRingTriggered = true;
+        }
+
+        public void RingIsNotTriggered()
+        {
+            isRingTriggered = false;
+        }
+
+        public bool getRingStatus()
+        {
+            return isRingTriggered;
+        }
+
+
+        // isPopUpOn is a flag to determine if the PopUp UI is on. 
+        bool isPopUpOn = false;
+
+        public void PopIsOn()
+        {
+            isPopUpOn = true;
+        }
+
+        public void PopIsOff()
+        {
+            isPopUpOn = false;
+        }
+
+        public bool getPopUpStatus()
+        {
+            return isPopUpOn;
+        }
+
+        // If the player is step outside the ring, and the beacon is disactived, can shoot the ball.
+        private bool CanShootball()
+        {
+            return !isBeconMode && !isRingTriggered && !isPopUpOn;
+        }
+
+        //public int count = 0;
+
+        // finger input variable
         private Vector2 startFingerPos;
         private bool startPosFlag;
         private Vector2 nowFingerPos;
@@ -198,6 +241,7 @@ namespace GoogleARCore.Examples.CloudAnchors
         private int backValue;
         private float force;
 
+        // Finger input function
         float judueFinger()
         {
 
@@ -252,6 +296,11 @@ namespace GoogleARCore.Examples.CloudAnchors
             return yMoveDistance;
         }
 
+
+
+        /// <summary>
+        /// The Unity Update() method.
+        /// </summary>
         public void Update()
         {
             _UpdateApplicationLifecycle();
@@ -305,7 +354,7 @@ namespace GoogleARCore.Examples.CloudAnchors
                 // The first touch on the Hosting mode will instantiate the origin anchor. Any
                 // subsequent touch will instantiate a star, both in Hosting and Resolving modes.
 
-                if (_CanPlaceStars() && !isBeconMode && DrgonFruitcount != 0)
+                if (_CanPlaceStars() && CanShootball() && DrgonFruitcount != 0)
                 {
 
                     force = judueFinger();

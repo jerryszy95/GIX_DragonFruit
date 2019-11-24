@@ -7,6 +7,19 @@ public class ScoreController : MonoBehaviour
 {
     private int score = 0;
     public GameObject WinUI;
+    
+    public bool isDragonReady()
+    {
+        if (GameObject.Find("Mouse Drago Simple(Clone)") != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +29,15 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = GameObject.Find("Mouse Drago Simple(Clone)").GetComponent<GoalDetecter>().count;
-        if (score >= 5)
+        if (isDragonReady())
         {
-            GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
-            WinUI.SetActive(true);
-            Destroy(gameObject);
+            score = GameObject.Find("Mouse Drago Simple(Clone)").GetComponent<GoalDetecter>().count;
+            if (score >= 5)
+            {
+                GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().PopIsOn();
+                WinUI.SetActive(true);
+                Destroy(gameObject);
+            }
         }
     }
 }
