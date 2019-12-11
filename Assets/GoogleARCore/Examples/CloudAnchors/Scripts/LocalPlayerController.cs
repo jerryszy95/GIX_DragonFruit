@@ -91,8 +91,10 @@ namespace GoogleARCore.Examples.CloudAnchors
                 var starObject = Instantiate(PoweredDragonFruit, position, rotation);
                 Debug.Log("DragonFruit is generated");
                 Debug.Log("force: " + force);
-                starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * (force / 280f) * 3, ForceMode.Impulse);
+                starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, 1.2f, 0.5f) * (force / 280f) * 3 * 2, ForceMode.Impulse);
                 starObject.GetComponent<Rigidbody>().useGravity = true;
+                // 有点问题
+                starObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f, -9.8f, 0f), ForceMode.Acceleration);
                 // Spawn the object in all clients.
 #pragma warning disable 618
                 NetworkServer.Spawn(starObject);

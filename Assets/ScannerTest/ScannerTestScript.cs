@@ -90,13 +90,6 @@ public class ScannerTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(DestoryBeacon)
-        {
-            Debug.Log("Beacon mode is off");
-            InstructionUI.SetActive(false);
-            CongratUI.SetActive(true);
-            Destroy(gameObject);
-        }
         if (_timeout > 0f)
         {
             _timeout -= Time.deltaTime;
@@ -124,12 +117,12 @@ public class ScannerTestScript : MonoBehaviour
                         
                         _latestRSSI[i] = rssi;
                         
-                        if (_latestRSSI.Max() <= -75)
+                        if (_latestRSSI.Max() <= -80)
                         {
                             Pop1.SetActive(false);
                             Pop2.SetActive(false);
                             Pop3.SetActive(false);
-                            //InstructionUI.SetActive(true);
+                            InstructionUI.SetActive(true);
                             GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconDisabled();
                         }
                         else
@@ -143,6 +136,10 @@ public class ScannerTestScript : MonoBehaviour
                                         break;
                                     }
                                     Pop1.SetActive(true);
+                                    //// Test function - show distance between beacon and player
+                                    //float distance1 = (GameObject.Find("PlayerCamera").transform.position - GameObject.Find("TestBeacon").transform.position).magnitude;
+                                    //GameObject.Find("BeaconTestText").GetComponent<Text>().text = GameObject.Find("BeaconTestText").GetComponent<Text>().text + "\n" + "B1 Distance: " + distance1;
+                                    ///////////////////////////////////////////////////////////
                                     InstructionUI.SetActive(false);
                                     GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
@@ -152,6 +149,10 @@ public class ScannerTestScript : MonoBehaviour
                                         break;
                                     }
                                     Pop2.SetActive(true);
+                                    //// Test function - show distance between beacon and player
+                                    //float distance2 = (GameObject.Find("PlayerCamera").transform.position - GameObject.Find("TestBeacon").transform.position).magnitude;
+                                    //GameObject.Find("BeaconTestText").GetComponent<Text>().text = GameObject.Find("BeaconTestText").GetComponent<Text>().text  +  "\n" + "B2 Distance: " + distance2;
+                                    ///////////////////////////////////////////////////////////
                                     InstructionUI.SetActive(false);
                                     GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
@@ -161,6 +162,10 @@ public class ScannerTestScript : MonoBehaviour
                                         break;
                                     }
                                     Pop3.SetActive(true);
+                                    //// Test function - show distance between beacon and player
+                                    //float distance3 = (GameObject.Find("PlayerCamera").transform.position - GameObject.Find("TestBeacon").transform.position).magnitude;
+                                    //GameObject.Find("BeaconTestText").GetComponent<Text>().text = GameObject.Find("BeaconTestText").GetComponent<Text>().text + "\n" + "B3 Distance: " + distance3;
+                                    ///////////////////////////////////////////////////////////
                                     InstructionUI.SetActive(false);
                                     GameObject.Find("CloudAnchorsExampleController").GetComponent<CloudAnchorsExampleController>().BeaconActived();
                                     break;
@@ -175,6 +180,13 @@ public class ScannerTestScript : MonoBehaviour
                     _timeout = _startScanDelay;
                 }
             }
+        }
+        if (DestoryBeacon)
+        {
+            Debug.Log("Beacon mode is off");
+            InstructionUI.SetActive(false);
+            CongratUI.SetActive(true);
+            Destroy(gameObject);
         }
     }
 
